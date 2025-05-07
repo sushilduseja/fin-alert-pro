@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header h1 {
+    color: #2c3e50;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.alert-container {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.alert-container h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+#alerts-list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.alert-item {
+    padding: 15px;
+    border-left: 4px solid;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.alert-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alert-item.price-target {
+    border-left-color: #3498db;
+}
+
+.alert-item.volume-spike {
+    border-left-color: #e74c3c;
+}
+
+.alert-item.technical-indicator {
+    border-left-color: #2ecc71;
+}
+
+.alert-item.news-alert {
+    border-left-color: #f39c12;
+}
+
+.alert-item.custom {
+    border-left-color: #9b59b6;
+}

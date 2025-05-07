@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinAlert Pro - Real-time Market Alerts</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> FinAlert Pro Dashboard</h1>
+                <div class="market-status">
+                    <span id="connection-status">
+                        <i class="fas fa-circle connected"></i> LIVE
+                    </span>
+                    <span id="current-time"></span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="dashboard">
+            <div class="panel-left">
+                <div class="market-summary">
+                    <h2>Market Overview</h2>
+                    <div class="indices">
+                        <div class="index up">
+                            <span class="index-name">S&P 500</span>
+                            <span class="index-value">4,587.32</span>
+                            <span class="index-change"><i class="fas fa-caret-up"></i> 0.82%</span>
+                        </div>
+                        <div class="index down">
+                            <span class="index-name">DOW J</span>
+                            <span class="index-value">35,120.08</span>
+                            <span class="index-change"><i class="fas fa-caret-down"></i> 0.17%</span>
+                        </div>
+                        <div class="index up">
+                            <span class="index-name">NASDAQ</span>
+                            <span class="index-value">14,356.43</span>
+                            <span class="index-change"><i class="fas fa-caret-up"></i> 1.23%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="btn" id="new-order-btn"><i class="fas fa-plus-circle"></i> New Order</button>
+                        <button class="btn" id="view-positions-btn"><i class="fas fa-wallet"></i> Positions</button>
+                        <button class="btn" id="export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-main">
+                <div class="alert-container">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-bell"></i> Live Trade Alerts</h2>
+                        <div class="controls">
+                            <button class="btn-small" id="filter-btn"><i class="fas fa-filter"></i></button>
+                            <span class="counter" id="alert-counter">0</span>
+                        </div>
+                    </div>
+                    <div class="alert-wrapper">
+                        <div id="alerts-list">
+                            <!-- Alerts will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-right">
+                <div class="detail-view" id="alert-detail">
+                    <h2>Alert Details</h2>
+                    <div class="detail-content">
+                        <p>Select an alert to view details</p>
+                    </div>
+                </div>
+                
+                <div class="trade-actions">
+                    <h2>Trading Actions</h2>
+                    <div class="action-form">
+                        <div class="form-row">
+                            <label>Symbol:</label>
+                            <input type="text" id="symbol-input" placeholder="e.g. JPM">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="number" id="quantity-input" value="100">
+                        </div>
+                        <div class="form-row">
+                            <label>Type:</label>
+                            <select id="order-type">
+                                <option value="market">Market</option>
+                                <option value="limit">Limit</option>
+                                <option value="stop">Stop</option>
+                            </select>
+                        </div>
+                        <div class="form-row price-row">
+                            <label>Price:</label>
+                            <input type="number" id="price-input" placeholder="0.00">
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-buy" id="buy-btn">BUY</button>
+                            <button class="btn btn-sell" id="sell-btn">SELL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Order Confirmation</h2>
+            <div id="order-details"></div>
+            <div class="modal-actions">
+                <button class="btn" id="confirm-order">Confirm</button>
+                <button class="btn btn-cancel" id="cancel-order">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
